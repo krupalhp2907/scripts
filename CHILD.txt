@@ -1,0 +1,104 @@
+@echo off
+echo ^<!DOCTYPE html^> >> index.html
+echo ^<html lang = "en"^> >> index.html
+echo   ^<head^> >> index.html
+echo      ^<meta charset = "UTF-8"^> >> index.html
+echo      ^<title^>React App^</title^> >> index.html
+echo   ^</head^> >> index.html
+echo   ^<body^> >> index.html
+echo      ^<div id = "app"^>^</div^> >> index.html
+echo      ^<script src = 'index_bundle.js'^>^</script^> >> index.html
+echo   ^</body^> >> index.html
+echo ^</html^> >> index.html
+
+
+echo import React from 'react'; >> main.js
+echo import ReactDOM from 'react-dom'; >> main.js
+echo import App from './App.js'; >> main.js
+echo import 'bootstrap/dist/css/bootstrap.min.css';  >> main.js
+echo. >>main.js
+echo ReactDOM.render(^<App /^>, document.getElementById('app')); >> main.js
+
+echo import React, { Component } from 'react'; >>App.js
+echo import { Jumbotron } from 'react-bootstrap'; >>App.js
+echo class App extends Component{ >>App.js
+echo   render(){ >>App.js
+echo      return( >>App.js
+echo         ^<div^> >>App.js
+echo            ^<h1^>Hello World^</h1^> >>App.js
+echo         ^</div^> >>App.js
+echo      ); >>App.js
+echo   } >>App.js
+echo } >>App.js
+echo export default App; >>App.js
+
+
+echo const path = require('path'); >> webpack.config.js
+echo const HtmlWebpackPlugin = require('html-webpack-plugin'); >> webpack.config.js
+echo module.exports = { >> webpack.config.js
+echo   entry: './main.js', >> webpack.config.js
+echo   output: { >> webpack.config.js
+echo      path: path.join(__dirname, '/bundle'), >> webpack.config.js
+echo      filename: 'index_bundle.js' >> webpack.config.js
+echo   }, >> webpack.config.js
+echo   devServer: { >> webpack.config.js
+echo      inline: true, >> webpack.config.js
+echo      port: 8080 >> webpack.config.js
+echo   }, >> webpack.config.js
+echo   module: { >> webpack.config.js
+echo      rules: [ >> webpack.config.js
+echo         { >> webpack.config.js
+echo            test: /\.jsx?$/, >> webpack.config.js
+echo            exclude: /node_modules/, >> webpack.config.js
+echo            loader: 'babel-loader', >> webpack.config.js
+echo            query: { >> webpack.config.js
+echo               presets: ['es2015', 'react'] >> webpack.config.js
+echo            } >> webpack.config.js
+echo         }, >> webpack.config.js
+echo. >> webpack.config.js
+echo. >> webpack.config.js
+echo. >> webpack.config.js
+REM For Bootstrap 
+
+
+echo        { >> webpack.config.js
+echo            test: /\.css$/, >> webpack.config.js
+echo            use: ['style-loader', 'css-loader'] >> webpack.config.js
+echo        } >> webpack.config.js
+
+
+REM For Bootstrap 
+echo      ] >> webpack.config.js
+echo   }, >> webpack.config.js
+echo   plugins:[ >> webpack.config.js
+echo      new HtmlWebpackPlugin({ >> webpack.config.js
+echo         template: './index.html' >> webpack.config.js
+echo      }) >> webpack.config.js
+echo   ] >> webpack.config.js
+echo } >>webpack.config.js
+echo. >> webpack.config.js
+echo. >> webpack.config.js
+echo. >> webpack.config.js
+echo // Put this two lins in Script Section removing test obj :-) >> webpack.config.js
+echo // "start": "webpack-dev-server --mode development --open --hot", >> webpack.config.js
+echo // "build": "webpack --mode production" >> webpack.config.js
+
+echo {"presets":["env", "react"]} >> .babelrc
+
+echo --------------------------------------------------
+echo           Initiallising source control
+echo --------------------------------------------------
+
+git init
+
+echo node_modules > .gitignore
+echo --------------------------------------------------
+echo                    Happy Journey
+echo            Your file Structure is as folows:
+                          git status
+echo.
+echo.
+echo.
+echo                  GOTO webpack.config.js
+echo                  Do as mentioned below
+echo --------------------------------------------------

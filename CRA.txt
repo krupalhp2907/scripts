@@ -1,0 +1,61 @@
+@echo off
+if "%1" == "" GOTO syntaxError
+
+echo Gathering Resources ........
+
+IF EXIST "C:\Users\%username%\Desktop\Projects" (
+	:moveInside
+	IF EXIST "C:\Users\%username%\Desktop\Projects\%1" (
+		echo The DIR already exists as you personal project
+		GOTO:eof
+	) ELSE (
+		mkdir C:\Users\%username%\Desktop\Projects\%1
+		cd C:\Users\%username%\Desktop\Projects\%1
+		
+		npm init 
+		echo [*---------------] Downloading React
+		call npm install react --save
+		echo [**--------------] Downloading React-dom
+		call npm install react-dom --save
+		echo [***-------------] Downloading webpack
+		call npm install webpack --save
+		echo [****------------] Downloading webpack-dev-server
+		call npm install webpack-dev-server --save
+		echo [*****-----------] Downloading webpack-cli
+		call npm install webpack-cli --save
+		echo [******----------] Downloading babel-core
+		call npm install babel-core --save-dev
+		echo [*******---------] Downloading babel-loader@7
+		call npm install babel-loader@7 --save-dev
+		echo [********--------] Downloading babel-preset-env
+		call npm install babel-preset-env --save-dev
+		echo [*********-------] Downloading babel-preset-react
+		call npm install babel-preset-react --save-dev
+		echo [**********------] Downloading HtmlWebpackPlugin
+		call npm install html-webpack-plugin --save-dev
+		echo [***********-----] Downloading babel-preset-es2015 babel-cli
+		call npm install babel-cli babel-preset-es2015 --save-dev
+		echo [************----] Downloading Bootstrap
+		call npm install bootstrap --save
+		echo [*************---] Downloading popper.js 
+		call npm install jquery popper.js --save
+		echo [**************--] Downloading popper.js 
+		call npm install jquery popper.js --save
+		echo [***************-] Downloading other dependencies
+		call npm install style-loader css-loader postcss-loader precss autoprefixer sass-loader react-bootstrap --save
+		echo [****************] Generating files and other dependencies
+		CALL C:\Users\%username%\child.bat
+
+	)
+) ELSE (
+	mkdir C:\Users\%username%\Desktop\Projects
+	GOTO moveInside
+)
+
+
+
+GOTO:eof
+
+:syntaxError
+echo Try This: CRA [dir-name]
+
