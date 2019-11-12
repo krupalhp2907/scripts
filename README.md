@@ -8,3 +8,5 @@ dependencies. It has been used by some of my juniors in college.
 Basically it is a sequence of installation procedures to be followed.
 It not only downloads the dependencies but it also makes the webpack bundle
 files and the required file structure for it.
+To make this work change .txt file to .bat file place both in user dir and
+then run CRA.bat
