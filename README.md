@@ -1,12 +1,9 @@
 # Scripts
-It is a bat file for Windows that is used to install all the dependencies
-of React.
-# Need
-As for the begineers it is very difficult for them to install all the 
-dependencies. It has been used by some of my juniors in college.
-# Working
-Basically it is a sequence of installation procedures to be followed.
-It not only downloads the dependencies but it also makes the webpack bundle
-files and the required file structure for it.
-To make this work change .txt file to .bat file place both in user dir and
-then run CRA.bat
+My first script.
+This script setups boilerplate for reactJS, Bootstrap, Bootstrap the way I like to use.
+# Usage
+CRA project_name
+# Requirements
+node package manager
+# Note
+child should be placed in C:\Users\%username%\child.bat
